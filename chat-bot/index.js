@@ -1,4 +1,7 @@
-import tmi from "tmi";
+import tmi from "tmi.js";
+import dotenv from "dotenv";
+import path from "path";
+dotenv.config({ path: path.resolve("../.env") });
 
 // Called every time a message comes in
 const onMessageHandler = (target, context, msg, self) => {
