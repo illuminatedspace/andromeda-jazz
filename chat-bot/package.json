@@ -1,0 +1,27 @@
+{
+  "name": "y",
+  "version": "1.0.0",
+  "description": "Chatbot for illuminatedspace twitch channel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/illuminatedspace/andromeda-jazz.git"
+  },
+  "keywords": [
+    "chatbot",
+    "twitch",
+    "streaming"
+  ],
+  "author": "illuminatedspace",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/illuminatedspace/andromeda-jazz/issues"
+  },
+  "homepage": "https://github.com/illuminatedspace/andromeda-jazz#readme",
+  "dependencies": {
+    "dotenv": "^8.1.0"
+  }
+}
