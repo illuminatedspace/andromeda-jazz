@@ -21,19 +21,22 @@ const tmiOptions = {
 const tmiClient = new tmi.client(tmiOptions);
 
 // Called every time a message comes in
-const onMessageHandler = (target, context, msg, self) => {
+const onMessageHandler = (target, context, message, self) => {
   if (self) {
     return;
   } // Ignore messages from the bot
 
   // Remove whitespace from chat message
-  const commandName = msg.trim();
+  const [commandName, ...args] = message.trim().split(" ");
 
   // If the command is known, let's execute it
   if (commandName === "!dice") {
     const num = rollDice();
     tmiClient.say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
+  } else if (commandName === "!pokedex") {
+    tmiClient.say(target, `${args}`);
+    console.log(args);
   } else {
     console.log(`* Unknown command ${commandName}`);
   }
