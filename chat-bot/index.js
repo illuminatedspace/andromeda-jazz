@@ -41,12 +41,11 @@ const onMessageHandler = (target, context, message, self) => {
     .split(" ");
 
   // If the command is known, let's execute it
-  // if (commandName === "!dice") {
-  //   const num = rollDice();
-  //   say(target, `You rolled a ${num}`);
-  //   console.log(`* Executed ${commandName} command`);
-  // } else
-  if (commandName === "!pokedex") {
+  if (commandName === "!dice") {
+    const num = rollDice();
+    say(target, `You rolled a ${num}`);
+    console.log(`* Executed ${commandName} command`);
+  } else if (commandName === "!pokedex") {
     pokedex(args, sayWithTarget);
   } else {
     console.log(`* Unknown command ${commandName}`);
