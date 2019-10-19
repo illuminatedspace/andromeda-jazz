@@ -8,7 +8,11 @@
 - [x] remove .env from file director in vscode
 - [x] learn how to spell\* (optional)
 
-- [ ] Intregrate API with a pokedex command
+Integrate API with a pokedex command
+
+- [ ] add chat command that echos the pokemon name
+- [ ] make api call to pokeapi and format info about the pokemon
+- [ ] return info about pokemon
 
 # Game Ideas
 
