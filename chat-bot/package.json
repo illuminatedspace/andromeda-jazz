@@ -33,5 +33,13 @@
     "@babel/node": "^7.6.3",
     "@babel/preset-env": "^7.6.3",
     "nodemon": "^1.19.4"
+  },
+  "nodemonConfig": {
+    "ignore": [
+      "test/*",
+      "docs/*",
+      "README.md",
+      "package.json"
+    ]
   }
 }
