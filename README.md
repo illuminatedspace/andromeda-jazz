@@ -14,6 +14,10 @@ Integrate API with a pokedex command
 - [ ] make api call to pokeapi and format info about the pokemon
 - [ ] return info about pokemon
 
+Cooldown on chat commands
+
+Filter commands by "!"
+
 setup
 
 - prettier
