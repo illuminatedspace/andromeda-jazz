@@ -3,6 +3,23 @@ import dotenv from "dotenv";
 import path from "path";
 dotenv.config({ path: path.resolve("../.env") });
 
+// declare env variables
+const username = "andromedajazz";
+const channels = ["illuminatedspace"];
+
+// get secret
+const password = process.env.OAUTH_TOKEN;
+
+// create tmi client
+const tmiOptions = {
+  identity: {
+    username,
+    password
+  },
+  channels
+};
+const tmiClient = new tmi.client(tmiOptions);
+
 // Called every time a message comes in
 const onMessageHandler = (target, context, msg, self) => {
   if (self) {
@@ -15,7 +32,7 @@ const onMessageHandler = (target, context, msg, self) => {
   // If the command is known, let's execute it
   if (commandName === "!dice") {
     const num = rollDice();
-    client.say(target, `You rolled a ${num}`);
+    tmiClient.say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
   } else {
     console.log(`* Unknown command ${commandName}`);
@@ -33,28 +50,9 @@ const onConnectedHandler = (addr, port) => {
   console.log(`* Connected to ${addr}:${port}`);
 };
 
-const chatBot = () => {
-  // declare env variables
-  const username = "andromedajazz";
-  const channels = ["illuminatedspace"];
+// Register our event handlers (defined below)
+tmiClient.on("message", onMessageHandler);
+tmiClient.on("connected", onConnectedHandler);
 
-  // get secret
-  const password = process.env.OAUTH_TOKEN;
-
-  // create tmi client
-  const tmiOptions = {
-    identity: {
-      username,
-      password
-    },
-    channels
-  };
-  const tmiClient = new tmiClient.client(tmiOptions);
-
-  // Register our event handlers (defined below)
-  client.on("message", onMessageHandler);
-  client.on("connected", onConnectedHandler);
-
-  // connect to twitch
-  tmiClient.connect();
-};
+// connect to twitch
+tmiClient.connect();
