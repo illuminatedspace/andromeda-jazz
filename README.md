@@ -10,9 +10,14 @@
 
 Integrate API with a pokedex command
 
-- [ ] add chat command that echos the pokemon name
+- [x] add chat command that echos the pokemon name
 - [ ] make api call to pokeapi and format info about the pokemon
 - [ ] return info about pokemon
+
+setup
+
+- prettier
+- eslint
 
 # Game Ideas
 
