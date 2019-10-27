@@ -11,12 +11,11 @@
 Integrate API with a pokedex command
 
 - [x] add chat command that echos the pokemon name
+- [x] Filter commands by "!"
 - [ ] make api call to pokeapi and format info about the pokemon
 - [ ] return info about pokemon
 
 Cooldown on chat commands
-
-Filter commands by "!"
 
 setup
 
