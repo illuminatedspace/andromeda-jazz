@@ -12,8 +12,11 @@ Integrate API with a pokedex command
 
 - [x] add chat command that echos the pokemon name
 - [x] Filter commands by "!"
-- [ ] make api call to pokeapi and format info about the pokemon
-- [ ] return info about pokemon
+- [x] make api call to pokeapi
+- [x] format info about the pokemon
+- [x] return info about pokemon
+- [ ] No comma for only 2 abilities
+- [ ] return link to picture, or return picture somehow
 
 Cooldown on chat commands
 

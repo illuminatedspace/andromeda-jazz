@@ -2,7 +2,6 @@ import _ from "lodash";
 import pokedexPromise from "./pokedexPromise";
 import { getCommandInfo, commands } from "../commandMap";
 
-// TODO: no commas for 2 abilities
 const transformAbilities = abilities => {
   const abilityNames = abilities.map(({ ability: { name } }) => name);
 
