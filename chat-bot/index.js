@@ -3,6 +3,7 @@ import tmi from "tmi.js";
 import dotenv from "dotenv";
 import path from "path";
 import pokedex from "./pokedex";
+import { commandPrefix } from "./consts";
 dotenv.config({ path: path.resolve("../.env") });
 
 // declare env variables
@@ -39,6 +40,10 @@ const onMessageHandler = (target, context, message, self) => {
     .trim()
     .toLowerCase()
     .split(" ");
+
+  if (!commandName.startsWith(commandPrefix)) {
+    return null;
+  }
 
   // If the command is known, let's execute it
   if (commandName === "!dice") {
