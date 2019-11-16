@@ -12,10 +12,12 @@ Setup
 
 - [ ] prettier
 - [ ] eslint
+- [ ] create global map of info like tallgrass for all modules to access
+- [ ] tests
 
 Battle Game
 
-- [ ] Create ability to enter Tall Grass Mode
+- [x] Create ability to enter Tall Grass Mode
 - [ ] Add random encounter at any point in a given time frame
 - [ ] Create random set of abilites for chat
 - [ ] Create pool of pokemon for Boss
