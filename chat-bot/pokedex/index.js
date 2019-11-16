@@ -67,13 +67,21 @@ const pokedex = async ([pokemonName], say) => {
   }
 
   console.log("getting pokemon info", pokemonName);
-  const pokemonInfo = await pokedexPromise.getPokemonByName(pokemonName);
-  const formattedPokemonInfo = formatPokemonInfo(pokemonInfo);
 
-  console.log("JIGGILYPUFF", formattedPokemonInfo);
+  try {
+    const pokemonInfo = await pokedexPromise.getPokemonByName(pokemonName);
 
-  console.log("printing pokemon facts");
-  say(`${formattedPokemonInfo}`);
+    const formattedPokemonInfo = formatPokemonInfo(pokemonInfo);
+
+    console.log("JIGGILYPUFF", formattedPokemonInfo);
+
+    console.log("printing pokemon facts");
+    say(`${formattedPokemonInfo}`);
+  } catch (error) {
+    console.error("No pokemon info found");
+    say(`Cannot get information on ${pokemonName}`);
+    return null;
+  }
 };
 
 export default pokedex;
