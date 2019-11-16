@@ -10,8 +10,8 @@ General
 
 Setup
 
-- prettier
-- eslint
+- [ ] prettier
+- [ ] eslint
 
 Battle Game
 
