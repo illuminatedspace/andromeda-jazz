@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import path from "path";
 import pokedex from "./pokedex";
 import { commandPrefix } from "./consts";
+import { commands } from "./commandMap";
+import pokeBattle from "./pokeBattle";
 dotenv.config({ path: path.resolve("../.env") });
 
 // declare env variables
@@ -51,9 +53,12 @@ const onMessageHandler = (target, context, message, self) => {
     console.log("processing dice command");
     say(target, `You rolled a ${num}`);
     console.log(`* Executed ${commandName} command`);
-  } else if (commandName === "!pokedex") {
+  } else if (commandName === `${commandPrefix}${commands.pokedex}`) {
     console.log("processing pokedex command");
-    pokedex(args, sayWithTarget);
+    pokedex(args, sayWithTarget, context);
+  } else if (commandName === `${commandPrefix}${commands.pokebattle}`) {
+    console.log("processing pokebattle command");
+    pokeBattle(args, sayWithTarget, context);
   } else {
     console.log(`* Unknown command ${commandName}`);
   }
