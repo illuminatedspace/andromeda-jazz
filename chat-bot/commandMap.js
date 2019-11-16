@@ -2,7 +2,12 @@ import pokedex from "./pokedex";
 import { commandPrefix } from "./consts";
 
 export const commands = {
-  pokedex: "pokedex"
+  pokedex: "pokedex",
+  pokebattle: "pokebattle"
+};
+
+export const pokebattle = {
+  tallgrass: "tallgrass"
 };
 
 export const commandMap = {
@@ -10,7 +15,19 @@ export const commandMap = {
     name: commands.pokedex,
     description: "returns information about a given pokemon",
     args: { pokemonName: { description: "Any pokemon name", optional: false } },
-    usage: `${commandPrefix}pokedex <pokemonName>`
+    usage: `${commandPrefix}${commands.pokedex} <pokemonName>`
+  },
+  [commands.pokebattle]: {
+    name: commands.pokebattle,
+    description: "Prefix for any pokebattle command",
+    args: {
+      pokemonName: { description: "Enter tallgrass mode", optional: true },
+      abilityName: {
+        description: "One of the availble ability names",
+        optional: true
+      }
+    },
+    usage: `${commandPrefix}${commands.pokebattle} tallgrass | <abilityName>`
   }
 };
 
