@@ -18,6 +18,7 @@ Setup
 Battle Game
 
 - [x] Create ability to enter Tall Grass Mode
+- [ ] Command info not working
 - [ ] Add random encounter at any point in a given time frame
 - [ ] Create random set of abilites for chat
 - [ ] Create pool of pokemon for Boss
