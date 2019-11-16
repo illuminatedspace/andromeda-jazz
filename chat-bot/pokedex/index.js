@@ -1,5 +1,5 @@
 import _ from "lodash";
-import pokedexPromise from "./pokedexPromise";
+import pokedexPromise from "../pokedexPromise";
 import { getCommandInfo, commands } from "../commandMap";
 
 const transformAbilities = abilities => {
