@@ -6,6 +6,9 @@ import pokedex from "./pokedex";
 import { commandPrefix } from "./consts";
 import { commands } from "./commandMap";
 import pokeBattle from "./pokeBattle";
+import { isTextCommand, sayTextCommand } from "./text-commands";
+import handleGeniusCommand from "./genius";
+import { canRunCommand } from "./commandRateLimit";
 dotenv.config({ path: path.resolve("../.env") });
 
 // declare env variables
@@ -47,7 +50,11 @@ const onMessageHandler = (target, context, message, self) => {
     return null;
   }
 
-  // If the command is known, let's execute it
+  // If the command is known, and hasn't been called within it's timeout let's execute it
+  // if (!canRunCommand(commandName)) {
+  //   return null;
+  // }
+
   if (commandName === "!dice") {
     const num = rollDice();
     console.log("processing dice command");
@@ -55,10 +62,16 @@ const onMessageHandler = (target, context, message, self) => {
     console.log(`* Executed ${commandName} command`);
   } else if (commandName === `${commandPrefix}${commands.pokedex}`) {
     console.log("processing pokedex command");
-    pokedex(args, sayWithTarget, context);
+    pokedex(args, sayWithTarget);
   } else if (commandName === `${commandPrefix}${commands.pokebattle}`) {
     console.log("processing pokebattle command");
-    pokeBattle(args, sayWithTarget, context);
+    pokeBattle(args, sayWithTarget);
+  } else if (isTextCommand(commandName)) {
+    console.log("processing text command");
+    sayTextCommand(commandName, sayWithTarget);
+  } else if (commandName === `${commandPrefix}${commands.genius}`) {
+    console.log("processing genius command");
+    handleGeniusCommand(args, sayWithTarget, context);
   } else {
     console.log(`* Unknown command ${commandName}`);
   }

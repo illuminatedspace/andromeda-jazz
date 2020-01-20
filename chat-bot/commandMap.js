@@ -3,7 +3,8 @@ import { commandPrefix } from "./consts";
 
 export const commands = {
   pokedex: "pokedex",
-  pokebattle: "pokebattle"
+  pokebattle: "pokebattle",
+  genius: "genius"
 };
 
 export const pokebattle = {
@@ -28,6 +29,14 @@ export const commandMap = {
       }
     },
     usage: `${commandPrefix}${commands.pokebattle} tallgrass | <abilityName>`
+  },
+  [commands.genius]: {
+    name: commands.genius,
+    description: "Tells you who the current certified geinus is.",
+    args: {
+      username: { description: "User to set as genius" }
+    },
+    usage: `${commandPrefix}${commands.genius}`
   }
 };
 
