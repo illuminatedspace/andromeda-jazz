@@ -9,6 +9,7 @@ import pokeBattle from "./pokeBattle";
 import { isTextCommand, sayTextCommand } from "./text-commands";
 import handleGeniusCommand from "./genius";
 import { canRunCommand } from "./commandRateLimit";
+import fetch from "node-fetch";
 dotenv.config({ path: path.resolve("../.env") });
 
 // declare env variables
@@ -22,9 +23,9 @@ const password = process.env.OAUTH_TOKEN;
 const tmiOptions = {
   identity: {
     username,
-    password
+    password,
   },
-  channels
+  channels,
 };
 const tmiClient = new tmi.client(tmiOptions);
 
@@ -33,7 +34,7 @@ const say = (target, message) => {
 };
 
 // Called every time a message comes in
-const onMessageHandler = (target, context, message, self) => {
+const onMessageHandler = async (target, context, message, self) => {
   if (self) {
     return;
   } // Ignore messages from the bot
@@ -41,10 +42,7 @@ const onMessageHandler = (target, context, message, self) => {
   const sayWithTarget = _.partial(say, target);
 
   // Remove whitespace from chat message
-  const [commandName, ...args] = message
-    .trim()
-    .toLowerCase()
-    .split(" ");
+  const [commandName, ...args] = message.trim().toLowerCase().split(" ");
 
   if (!commandName.startsWith(commandPrefix)) {
     return null;
@@ -72,6 +70,19 @@ const onMessageHandler = (target, context, message, self) => {
   } else if (commandName === `${commandPrefix}${commands.genius}`) {
     console.log("processing genius command");
     handleGeniusCommand(args, sayWithTarget, context);
+    // } else if (commandName === `${commandPrefix}sotest`) {
+    //   console.log("processing shout out command");
+    //   try {
+    //     const response = await fetch(
+    //       "https://api.twitch.tv/helix/users?login=illuminatedspace"
+    //     );
+    //     const body = await response.text();
+    //     console.log("PIKACHU");
+    //     console.log(body);
+    //   } catch (err) {
+    //     console.error("COULD NOT FETCH DATA");
+    //     console.error(err);
+    //   }
   } else {
     console.log(`* Unknown command ${commandName}`);
   }
