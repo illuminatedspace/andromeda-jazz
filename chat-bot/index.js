@@ -9,6 +9,7 @@ import pokeBattle from "./pokeBattle";
 import { isTextCommand, sayTextCommand } from "./text-commands";
 import handleGeniusCommand from "./genius";
 import { canRunCommand } from "./commandRateLimit";
+import handleScareCommand from "./scare";
 dotenv.config({ path: path.resolve("../.env") });
 
 // declare env variables
@@ -66,6 +67,9 @@ const onMessageHandler = (target, context, message, self) => {
   } else if (isTextCommand(commandName)) {
     console.log("processing text command");
     sayTextCommand(commandName, sayWithTarget);
+  } else if (commandName === `${commandPrefix}${commands.scare}`) {
+    console.log("processing scare command");
+    handleScareCommand(args, sayWithTarget);
   } else if (commandName === `${commandPrefix}${commands.genius}`) {
     console.log("processing genius command");
     handleGeniusCommand(args, sayWithTarget, context);

@@ -4,7 +4,8 @@ import { commandPrefix } from "./consts";
 export const commands = {
   pokedex: "pokedex",
   pokebattle: "pokebattle",
-  genius: "genius"
+  genius: "genius",
+  scare: "scare",
 };
 
 export const pokebattle = {
@@ -36,8 +37,18 @@ export const commandMap = {
     args: {
       username: { description: "User to set as genius" },
     },
-    usage: `${commandPrefix}${commands.genius}`
-  }
+    usage: `${commandPrefix}${commands.genius}`,
+  },
+  [commands.scare]: {
+    name: commands.scare,
+    description: "Tells you how many times Liz has been scared this stream or lets you modify the count.",
+    args: {
+      add: { description: "Add a number to the count", optional: true },
+      minus: { description: "Subtract a number from the count", optional: true },
+      number: { description: "The number to modify the count", optional: true },
+    },
+    usage: `${commandPrefix}${commands.scare} add | minus <number>`,
+  },
 };
 
 const argWrappers = { optional: ["[", "]"], required: ["<", ">"] };
