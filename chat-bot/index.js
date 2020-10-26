@@ -9,6 +9,7 @@ import pokeBattle from "./pokeBattle";
 import { isTextCommand, sayTextCommand } from "./text-commands";
 import handleGeniusCommand from "./genius";
 import { canRunCommand } from "./commandRateLimit";
+import { handleCount } from "./count";
 dotenv.config({ path: path.resolve("../.env") });
 
 // declare env variables
@@ -44,6 +45,7 @@ const onMessageHandler = (target, context, message, self) => {
   const [commandName, ...args] = message.trim().toLowerCase().split(" ");
 
   if (!commandName.startsWith(commandPrefix)) {
+    console.log("ABRA", commandName);
     return null;
   }
 
@@ -69,6 +71,9 @@ const onMessageHandler = (target, context, message, self) => {
   } else if (commandName === `${commandPrefix}${commands.genius}`) {
     console.log("processing genius command");
     handleGeniusCommand(args, sayWithTarget, context);
+    // } else if (commandName === `${commandPrefix}${commands.hex}`) {
+    //   console.log("processing hex command");
+    //   handleCount(args, sayWithTarget, context);
   } else {
     console.log(`* Unknown command ${commandName}`);
   }

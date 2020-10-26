@@ -4,11 +4,13 @@ import { commandPrefix } from "./consts";
 export const commands = {
   pokedex: "pokedex",
   pokebattle: "pokebattle",
-  genius: "genius"
+  genius: "genius",
+  hex: "hex",
+  bless: "bless",
 };
 
 export const pokebattle = {
-  tallgrass: "tallgrass"
+  tallgrass: "tallgrass",
 };
 
 export const commandMap = {
