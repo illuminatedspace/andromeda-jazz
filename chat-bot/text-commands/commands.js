@@ -15,7 +15,7 @@ const commands = [
   {
     command: commandNames.discord,
     message:
-      "Join our Discord server for stream announcements, book club, knitting circle, watch party, and to vote on our next mission! https://discord.gg/U8amNwk",
+      "Join our Discord server for stream announcements, book club, knitting circle, watch party, and to vote on our next mission! https://discord.gg/PgES7Zw",
   },
   // {
   //   command: commandNames.donate,

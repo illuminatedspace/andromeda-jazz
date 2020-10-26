@@ -22,9 +22,9 @@ const password = process.env.OAUTH_TOKEN;
 const tmiOptions = {
   identity: {
     username,
-    password
+    password,
   },
-  channels
+  channels,
 };
 const tmiClient = new tmi.client(tmiOptions);
 
@@ -41,10 +41,7 @@ const onMessageHandler = (target, context, message, self) => {
   const sayWithTarget = _.partial(say, target);
 
   // Remove whitespace from chat message
-  const [commandName, ...args] = message
-    .trim()
-    .toLowerCase()
-    .split(" ");
+  const [commandName, ...args] = message.trim().toLowerCase().split(" ");
 
   if (!commandName.startsWith(commandPrefix)) {
     return null;

@@ -16,7 +16,7 @@ export const commandMap = {
     name: commands.pokedex,
     description: "returns information about a given pokemon",
     args: { pokemonName: { description: "Any pokemon name", optional: false } },
-    usage: `${commandPrefix}${commands.pokedex} <pokemonName>`
+    usage: `${commandPrefix}${commands.pokedex} <pokemonName>`,
   },
   [commands.pokebattle]: {
     name: commands.pokebattle,
@@ -25,16 +25,16 @@ export const commandMap = {
       pokemonName: { description: "Enter tallgrass mode", optional: true },
       abilityName: {
         description: "One of the availble ability names",
-        optional: true
-      }
+        optional: true,
+      },
     },
-    usage: `${commandPrefix}${commands.pokebattle} tallgrass | <abilityName>`
+    usage: `${commandPrefix}${commands.pokebattle} tallgrass | <abilityName>`,
   },
   [commands.genius]: {
     name: commands.genius,
     description: "Tells you who the current certified geinus is.",
     args: {
-      username: { description: "User to set as genius" }
+      username: { description: "User to set as genius" },
     },
     usage: `${commandPrefix}${commands.genius}`
   }
@@ -42,16 +42,16 @@ export const commandMap = {
 
 const argWrappers = { optional: ["[", "]"], required: ["<", ">"] };
 
-const transformArgumentDescriptions = args =>
+const transformArgumentDescriptions = (args) =>
   Object.keys(args)
-    .map(arg => {
+    .map((arg) => {
       const { description, optional } = args[arg];
       const argWrapper = optional ? argWrappers.optional : argWrappers.required;
       return `${argWrapper[0]}${arg}${argWrapper[1]} ${description}`;
     })
     .join(", ");
 
-export const getCommandInfo = commandName => {
+export const getCommandInfo = (commandName) => {
   const { description, usage, args } = commandMap[commandName];
 
   const argsWithDescriptions = transformArgumentDescriptions(args);
