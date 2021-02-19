@@ -48,11 +48,6 @@ const onMessageHandler = (target, context, message, self) => {
     return null;
   }
 
-  // If the command is known, and hasn't been called within it's timeout let's execute it
-  // if (!canRunCommand(commandName)) {
-  //   return null;
-  // }
-
   if (commandName === "!dice") {
     const num = rollDice();
     console.log("processing dice command");
